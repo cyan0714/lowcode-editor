@@ -18,7 +18,7 @@ interface Action {
   updateComponentProps: (componentId: number, props: any) => void
 }
 
-export const useComponetsStore = create<State & Action>((set, get) => ({
+export const useComponentsStore = create<State & Action>((set, get) => ({
   components: [
     {
       id: 1,
