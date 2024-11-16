@@ -9,10 +9,12 @@ function Page({ id, name, children }: CommonComponentProps) {
 
   const [{ canDrop }, drop] = useDrop(() => ({
     accept: ['Button', 'Container'],
-    drop: (item: { type: string }) => {
-      console.log('item', item);
+    drop: (item: { type: string }, monitor) => {
+      const didDrop = monitor.didDrop()
+      if (didDrop) {
+        return
+      }
       const props = componentConfig[item.type].defaultProps
-      console.log('props', props)
 
       addComponent(
         {
