@@ -6,29 +6,29 @@ export function EditArea() {
   const { components, addComponent } = useComponentsStore()
   const { componentConfig } = useComponentConfigStore()
 
-  useEffect(() => {
-    addComponent(
-      {
-        id: 222,
-        name: 'Container',
-        props: {},
-        children: [],
-      },
-      1
-    )
+  // useEffect(() => {
+  //   addComponent(
+  //     {
+  //       id: 222,
+  //       name: 'Container',
+  //       props: {},
+  //       children: [],
+  //     },
+  //     1
+  //   )
 
-    addComponent(
-      {
-        id: 333,
-        name: 'Button',
-        props: {
-          text: '无敌',
-        },
-        children: [],
-      },
-      222
-    )
-  }, [])
+  //   addComponent(
+  //     {
+  //       id: 333,
+  //       name: 'Button',
+  //       props: {
+  //         text: '无敌',
+  //       },
+  //       children: [],
+  //     },
+  //     222
+  //   )
+  // }, [])
 
   function renderComponents(components: Component[]): React.ReactNode {
     return components.map((component: Component) => {
@@ -42,6 +42,9 @@ export function EditArea() {
         config.component,
         {
           key: component.id,
+          id: component.id, // 加 id 才能 drop 到画布区
+          // 'data-component-id': component.id,
+          // 'data-component-type': component.name,
           ...config.defaultProps,
           ...component.props,
         },
